@@ -3,14 +3,12 @@ layout: post
 title: Getting started with firestore security rules testing (firestore emulator + Jest + CircleCi)
 ---
 
-Firebase recently released the firestore emulator and the `@firebase/testing`
-library which let's you unit test your firestore security rules. 
+This article covers the setup process for a basic project using the firestore
+emulator, `@firebase/testing`, Jest and CircleCi for unit testing of firestore
+security rules.
 
-This article covers the setup process for a basic project using Jest and
-CircleCi, but the steps should be very similar for other test runners and CI
-systems.
-
-The final project from the article is on my github: (JakeHedman/firestore-security-rules-testing)[https://github.com/JakeHedman/firestore-security-rules-testing]
+The final project on github:
+[JakeHedman/firestore-security-rules-testing](https://github.com/JakeHedman/firestore-security-rules-testing)
 
 ## Firebase project setup
 
@@ -26,11 +24,12 @@ cd my-project
 firebase init
 ```
 
-(Git commit)[https://github.com/JakeHedman/firestore-security-rules-testing/commit/firebase-project-setup]
+[Git commit](https://github.com/JakeHedman/firestore-security-rules-testing/commit/firebase-project-setup)
 
 ## Moving firestore 
 
-I like to keep my firestore files in a subdirectory. Start by moving rules and indexes:
+I like to keep my firestore files in a subdirectory. Start by moving rules and
+indexes:
 
 ```sh
 mkdir firestore
@@ -50,7 +49,7 @@ And update `firebase.json`:
  }
 ```
 
-(Git commit)[https://github.com/JakeHedman/firestore-security-rules-testing/commit/moving-firestore]
+[Git commit](https://github.com/JakeHedman/firestore-security-rules-testing/commit/moving-firestore)
 
 ## Security rules
 
@@ -68,7 +67,7 @@ Add some security rule to test in `firestore/firestore.rules`
  }
 ```
 
-(Git commit)[https://github.com/JakeHedman/firestore-security-rules-testing/commit/security-rules]
+[Git commit](https://github.com/JakeHedman/firestore-security-rules-testing/commit/security-rules)
 
 ## Firestore project setup
 
@@ -89,7 +88,7 @@ Define the test script in `package.json`:
    },
 ```
 
-(Git commit)[https://github.com/JakeHedman/firestore-security-rules-testing/commit/firestore-project-setup]
+[Git commit](https://github.com/JakeHedman/firestore-security-rules-testing/commit/firestore-project-setup)
 
 ## Writing tests
 
@@ -133,7 +132,7 @@ firebase setup:emulators:firestore
 npm test
 ```
 
-(Git commit)[https://github.com/JakeHedman/firestore-security-rules-testing/commit/writing-tests]
+[Git commit](https://github.com/JakeHedman/firestore-security-rules-testing/commit/writing-tests)
 
 ## CI Config
 
@@ -168,7 +167,7 @@ workflows:
 It's time to `git commit` and `git push` since circle-ci wants your
 `.circleci/config.yml` to exist before you set up your project.
 
-(Git commit)[https://github.com/JakeHedman/firestore-security-rules-testing/commit/ci-config]
+[Git commit](https://github.com/JakeHedman/firestore-security-rules-testing/commit/ci-config)
 
 ## Firebase auth in CI
 
@@ -183,8 +182,9 @@ Go to https://circleci.com and set up your project, then find `Project
 Settings` -> `Environment Variables` -> `Add Variable` and add your firebase
 token.
 
-Name: `FIREBASE_TOKEN`
-Value: Your firebase token (e.g. `1/JA003GorjJAKEhhHeyLove-BRJ5oEROn3`)
+*Name*: `FIREBASE_TOKEN`
+
+*Value*: Your firebase token (e.g. `1/JA003GorjJAKEhhHeyLove-BRJ5oEROn3`)
 
 Note: This token will not be available in pull requests. If you need to test
 PRs you'll need to add your `FIREBASE_TOKEN` to your `.circleci/config.yml`
